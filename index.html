@@ -1,13 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Export Private Key</title>
-      <script type="module" crossorigin src="/web-helpers/assets/index-C2Vyi6cn.js"></script>
-      <link rel="stylesheet" crossorigin href="/web-helpers/assets/index-CXlgwY84.css">
-    </head>
-    <body>
-        <div id="root"></div>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Export Private Key</title>
+
+    <!-- ✅ Добавляем SPA-редирект для GitHub Pages -->
+    <script type="text/javascript">
+      (function (l) {
+        if (l.search[1] === "/") {
+          const decoded = l.search
+            .slice(1)
+            .split("&")
+            .map((s) => s.replace(/~and~/g, "&"))
+            .join("?");
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      })(window.location);
+    </script>
+
+    <!-- 💡 Потом обычный Vite-скрипт -->
+    <script
+      type="module"
+      crossorigin
+      src="/web-helpers/assets/index-C2Vyi6cn.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      crossorigin
+      href="/web-helpers/assets/index-CXlgwY84.css"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
