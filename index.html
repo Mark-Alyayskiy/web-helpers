@@ -8,24 +8,20 @@
     <!-- ✅ Добавляем SPA-редирект для GitHub Pages -->
     <script>
       // only run this logic if redirected by GitHub Pages 404
-      if (
-        location.hostname === "mark-alyayskiy.github.io" &&
-        location.pathname.startsWith("/web-helpers/") &&
-        location.pathname !== "/web-helpers/" &&
-        !location.pathname.includes(".")
-      ) {
-        // stay on same path, this is a normal SPA route
-      } else if (
-        location.search.startsWith("?/") &&
-        location.search.length > 2
-      ) {
+      if (location.search.startsWith("?/") && location.search.length > 2) {
         const redirect = location.search
           .slice(2)
           .split("&")
           .map((s) => s.replace(/~and~/g, "&"))
           .join("?");
 
-        window.history.replaceState(null, null, "/" + redirect + location.hash);
+        const newUrl =
+          location.origin +
+          location.pathname.replace(/\/$/, "") +
+          "/" +
+          redirect +
+          location.hash;
+        window.history.replaceState(null, null, newUrl);
       }
     </script>
 
