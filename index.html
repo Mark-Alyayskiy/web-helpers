@@ -6,21 +6,27 @@
     <title>Export Private Key</title>
 
     <!-- ✅ Добавляем SPA-редирект для GitHub Pages -->
-    <script type="text/javascript">
-      (function (l) {
-        if (l.search[1] === "/") {
-          const decoded = l.search
-            .slice(1)
-            .split("&")
-            .map((s) => s.replace(/~and~/g, "&"))
-            .join("?");
-          window.history.replaceState(
-            null,
-            null,
-            l.pathname.slice(0, -1) + decoded + l.hash
-          );
-        }
-      })(window.location);
+    <script>
+      // only run this logic if redirected by GitHub Pages 404
+      if (
+        location.hostname === "mark-alyayskiy.github.io" &&
+        location.pathname.startsWith("/web-helpers/") &&
+        location.pathname !== "/web-helpers/" &&
+        !location.pathname.includes(".")
+      ) {
+        // stay on same path, this is a normal SPA route
+      } else if (
+        location.search.startsWith("?/") &&
+        location.search.length > 2
+      ) {
+        const redirect = location.search
+          .slice(2)
+          .split("&")
+          .map((s) => s.replace(/~and~/g, "&"))
+          .join("?");
+
+        window.history.replaceState(null, null, "/" + redirect + location.hash);
+      }
     </script>
 
     <!-- 💡 Потом обычный Vite-скрипт -->
